@@ -1,17 +1,17 @@
 <template>
-  <!--
-  <a href="ainterno" @click.once.prevent="something">link interno</a>
-  -->
-  <input type="text" @keyup.k="something">
+  <p v-once>Estoque inicial: {{ stock }}</p>
+  <p>Estoque atualizado: {{ stock }}</p>
+
+  <button @click="stock++">Aumentar estoque</button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
 
 export default defineComponent({
-  methods: {
-    something() {
-      console.log("Hello Cataline")
+  data() {
+    return {
+      stock: 1
     }
   }
 })
