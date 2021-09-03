@@ -1,6 +1,5 @@
 <template>
-  {{ company }}
-  <p v-text="company"></p>
+  <p>Acesse: <span v-html="link" /></p>
 </template>
 
 <script lang="ts">
@@ -9,7 +8,7 @@ import { defineComponent } from "vue"
 export default defineComponent({
   data() {
     return {
-      company: "Cataline"
+      link: '<a href="https://abstrakt.social">Cataline</a>'
     }
   }
 })
