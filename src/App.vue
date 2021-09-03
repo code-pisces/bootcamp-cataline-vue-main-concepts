@@ -1,7 +1,7 @@
 <template>
-  <h1>{{ count }}</h1>
-  <button @click="count++">incrementar</button>
-  <button @click="destroyComponent">desmontar</button>
+  <a :href="product.url" :class="productClass">
+    {{ product.name }}
+  </a>
 </template>
 
 <script lang="ts">
@@ -10,46 +10,28 @@ import { defineComponent } from "vue"
 export default defineComponent({
   data() {
     return {
-      count: 0
+      product: {
+        name: "Camisa",
+        url: "http://loja.com/produtos/12345",
+        stock: true
+      }
     }
   },
 
-  beforeCreate() {
-    console.log("Antes da criação")
-  },
-
-  created() {
-    console.log("Depois da criação")
-  },
-
-  beforeMount() {
-    console.log(this.$el)
-  },
-
-  mounted() {
-    console.log(this.$el)
-  },
-
-  beforeUpdate() {
-    // console.log("Antes da atualização")
-  },
-
-  updated() {
-    if (this.count === 5) this.count = 6
-  },
-
-  beforeUnmount() {
-    console.log("salvar a contagem no db")
-  },
-
-  unmounted() {
-    alert("Obrigado por utilizar o contador!")
-  },
-
-  methods: {
-    destroyComponent() {
-      this.$.appContext.app.unmount()
+  computed: {
+    productClass(): string {
+      return this.product.stock ? 'sucess' : 'danger'
     }
   }
 })
 </script>
+
+<style scoped>
+.danger {
+  color: red;
+}
+
+.sucess {
+  color: green;
+}
+</style>
