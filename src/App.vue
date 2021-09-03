@@ -1,8 +1,6 @@
 <template>
   <div>
-    <h1 v-if="sex === 'Masculino'">Masculino</h1>
-    <h1 v-else-if="sex === 'Feminino'">Feminino</h1>
-    <h1 v-else>{{ sex }}</h1>
+    <h1 v-show="sex === 'Masculino'">Masculino</h1>
   </div>
 </template>
 
