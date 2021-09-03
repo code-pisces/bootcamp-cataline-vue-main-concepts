@@ -1,14 +1,17 @@
 <template>
-  <p>Acesse: <span v-html="link" /></p>
+  <!--
+  <a href="ainterno" @click.once.prevent="something">link interno</a>
+  -->
+  <input type="text" @keyup.k="something">
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
 
 export default defineComponent({
-  data() {
-    return {
-      link: '<a href="https://abstrakt.social">Cataline</a>'
+  methods: {
+    something() {
+      console.log("Hello Cataline")
     }
   }
 })
