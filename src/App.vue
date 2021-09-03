@@ -1,7 +1,6 @@
 <template>
-  <a :href="product.url" :class="productClass">
-    {{ product.name }}
-  </a>
+  {{ company }}
+  <p v-text="company"></p>
 </template>
 
 <script lang="ts">
@@ -10,28 +9,8 @@ import { defineComponent } from "vue"
 export default defineComponent({
   data() {
     return {
-      product: {
-        name: "Camisa",
-        url: "http://loja.com/produtos/12345",
-        stock: true
-      }
-    }
-  },
-
-  computed: {
-    productClass(): string {
-      return this.product.stock ? 'sucess' : 'danger'
+      company: "Cataline"
     }
   }
 })
 </script>
-
-<style scoped>
-.danger {
-  color: red;
-}
-
-.sucess {
-  color: green;
-}
-</style>
