@@ -1,9 +1,17 @@
 <template>
-  <h1 v-highlight="'blue'">Hello World!</h1>
+  <h1 :class="['static', { 'text-danger': hasError }, className]">Cataline</h1>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
 
-export default defineComponent({})
+export default defineComponent({
+  data() {
+    return {
+      isActive: true,
+      hasError: true,
+      className: "gustavo"
+    }
+  }
+})
 </script>
