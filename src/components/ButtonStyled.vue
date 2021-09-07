@@ -1,15 +1,42 @@
 <template>
-  <button>botão estilizado</button>
+  <button :class="['button-styled', color]">{{text}}
+    {{ user.name }}
+  </button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
 
-export default defineComponent({})
+type color = 'sucess' | 'danger' | 'primary'
+
+interface User {
+  id: number,
+  name: string,
+}
+
+export default defineComponent({
+  props: {
+    text: {
+      type: [String, Number],
+      required: true,
+    },
+    color: {
+      type: String,
+      default: "primary",
+      validator: (value: color) => {
+        return ['sucess', 'danger', 'primary'].includes(value)
+      }
+    },
+    user: {
+      type: Object as PropType<User>,
+      required: true,
+    }
+  }
+})
 </script>
 
 <style scoped>
-button {
+.button-styled {
   color: #fff;
   border-radius: 0.3rem;
   padding: 0.5rem 1rem;
@@ -18,6 +45,17 @@ button {
   cursor: pointer;
   display: block;
   margin-bottom: 1rem;
+}
+
+.success {
+  background-color: green;
+}
+
+.danger {
+  background-color: red;
+}
+
+.primary {
   background-color: #2d6cea;
 }
 </style>
