@@ -1,6 +1,12 @@
 <template>
-  <ButtonStyled color="danger" text="Cadastro" :user="user" />
-  <ButtonStyled :text="123" />
+  <ButtonStyled color="primary" text="Facebook" :user="user">
+    <template v-slot:before>
+      <i class="fab fa-facebook-f"></i>
+    </template>
+    <template v-slot:after>
+      <i class="fab fa-facebook"></i>
+    </template>
+  </ButtonStyled>
 </template>
 
 <script lang="ts">
@@ -20,5 +26,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
