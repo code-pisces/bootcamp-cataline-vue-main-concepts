@@ -1,5 +1,5 @@
 <template>
-  <button :class="['button-styled', color]">
+  <button :class="['button-styled', color]" @click="$emit('passarinho', 'calopsita')">
     <slot name="before"/>
     <!--Serve para por um componete dentro como se fosse o children-->
     {{ text }}
@@ -8,14 +8,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue"
+import { defineComponent } from "vue"
 
 type color = "sucess" | "danger" | "primary"
-
-interface User {
-  id: number
-  name: string
-}
 
 export default defineComponent({
   props: {
@@ -30,10 +25,6 @@ export default defineComponent({
         return ["sucess", "danger", "primary"].includes(value)
       }
     },
-    user: {
-      type: Object as PropType<User>,
-      required: true
-    }
   }
 })
 </script>
