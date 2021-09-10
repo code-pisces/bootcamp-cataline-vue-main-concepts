@@ -1,23 +1,26 @@
 <template>
-  <ButtonStyled color="primary" @passarinho="action($event)" text="Facebook">
+  <ul>
+    <li @click="currentView ='Home'">Home</li>
+    <li @click="currentView ='About'">Sobre</li>
+    <li @click="currentView ='Contact'">Contato</li>
+  </ul>
 
-  </ButtonStyled>
+  <component :is="currentView" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
 
+import Home from '@/pages/Home.vue'
+import About from '@/pages/About.vue'
+import Contact from '@/pages/Contact.vue'
+
 export default defineComponent({
+  components: { Home, About, Contact },
   data() {
     return {
-    }
-  },
-  methods: {
-    action(event: string) {
-      console.log(event)
+      currentView: 'Home'
     }
   }
 })
 </script>
-
-<style scoped></style>
