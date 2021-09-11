@@ -1,26 +1,53 @@
 <template>
-  <ul>
-    <li @click="currentView ='Home'">Home</li>
-    <li @click="currentView ='About'">Sobre</li>
-    <li @click="currentView ='Contact'">Contato</li>
-  </ul>
+  <button @click="show = !show">Toggle</button>
 
-  <component :is="currentView" />
+  <transition name="fade"><h1 v-if="show">Cataline</h1></transition>
+
+  <transition name="scale"><h1 v-show="show">Cataline</h1></transition>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"
 
-import Home from '@/pages/Home.vue'
-import About from '@/pages/About.vue'
-import Contact from '@/pages/Contact.vue'
-
 export default defineComponent({
-  components: { Home, About, Contact },
   data() {
     return {
-      currentView: 'Home'
+      show: false
     }
   }
 })
 </script>
+
+<style scoped>
+/* 
+v-enter-from (de onde estar vindo)
+v-enter-active (como vai acontecer)
+v-enter-to (para onde está indo)
+
+v-leave-from (de onde estar vindo)
+v-leave-active (como vai acontecer)
+v-leave-to (para onde está indo)
+
+O nome inicial `v` depende do atributo `name`
+*/
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+  transition: opacity 0.5s;
+}
+</style>
