@@ -1,7 +1,7 @@
 <template>
   <button @click="show = !show">Toggle</button>
 
-  <transition enter-active-class="animate__animated animate__sludeInLeft" leave-active-class="animate__animated animate__slideOutLeft"><h1 v-if="show">Cataline</h1></transition>
+  <transition enter-active-class="animate__animated animate__sludeInLeft" :appear="show" leave-active-class="animate__animated animate__slideOutLeft"><h1 v-if="show">Cataline</h1></transition>
 </template>
 
 <script lang="ts">
